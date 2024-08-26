@@ -1,0 +1,16 @@
+pub mod arrival_or_departure;
+pub mod common;
+pub mod date;
+pub mod journey;
+pub mod journeys_response;
+pub mod leg;
+pub mod line;
+pub mod load_factor;
+pub mod location;
+pub mod locations_response;
+pub mod operator;
+#[cfg(feature = "polylines")]
+pub mod polyline;
+pub mod products;
+pub mod remark;
+pub mod stopover;

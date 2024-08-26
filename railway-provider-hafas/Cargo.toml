@@ -1,0 +1,116 @@
+[package]
+name = "railway-provider-hafas"
+version = "0.1.1"
+authors = ["Julian Schmidhuber <railway-backend@protonmail.com>", "Yureka <yuka@yuka.dev>"]
+edition = "2021"
+description = "Implementation of a HAFAS client in Rust"
+repository = "https://gitlab.com/schmiddi-on-mobile/railway-backend"
+license = "AGPL-3.0-or-later OR EUPL-1.2"
+keywords = ["railway-backend", "train", "public-transport"]
+
+[dependencies]
+rcore = { package = "railway-core", path = "../railway-core", version = "0.1" }
+
+md-5 = "0.10"
+serde = { version = "1.0", features = [ "derive" ] }
+serde_json = "1.0"
+thiserror = "1.0"
+async-trait = "0.1"
+chrono = { version = "0.4", features = [ "serde" ] }
+chrono-tz = "0.8"
+geojson = { version = "0.24", optional = true }
+polyline = { version = "0.10", optional = true }
+log = "0.4"
+hex = "0.4.3"
+url = "2.5.0"
+
+tokio = { version = "1.37", optional = true, features = [ "macros", "rt-multi-thread" ] }
+
+[features]
+default = [ ]
+rt-multi-thread = [ "rcore/rt-multi-thread" ]
+polylines = [ "polyline", "geojson", "rcore/polylines" ]
+db-profile = []
+# sncf-profile = []
+vbb-profile = []
+oebb-profile = []
+nahsh-profile = []
+vvt-profile = []
+pkp-profile = []
+irish-rail-profile = []
+mobiliteit-lu-profile = []
+bart-profile = []
+dart-profile = []
+rmv-profile = []
+insa-profile = []
+ivb-profile = []
+kvb-profile = []
+cmta-profile = []
+sbahn-muenchen-profile = []
+saarvv-profile = []
+cfl-profile = []
+nvv-profile = []
+mobil-nrw-profile = []
+vsn-profile = []
+vgi-profile = []
+vbn-profile = []
+vrn-profile = []
+rsag-profile = []
+vmt-profile = []
+vos-profile = []
+avv-profile = []
+rejseplanen-profile = []
+ooevv-profile = []
+salzburg-profile = []
+verbundlinie-profile = []
+svv-profile = []
+vor-profile = []
+vkg-profile = []
+vvv-profile = []
+# tpg-profile = []
+bls-profile = []
+resrobot-profile = []
+
+all-profiles = [
+  "db-profile",
+  "vbb-profile",
+  "oebb-profile",
+  "nahsh-profile",
+  "vvt-profile",
+  "pkp-profile",
+  "irish-rail-profile",
+  "mobiliteit-lu-profile",
+  "dart-profile",
+  "rmv-profile",
+  "cmta-profile",
+  "sbahn-muenchen-profile",
+  "saarvv-profile",
+  "cfl-profile",
+  "nvv-profile",
+  "vsn-profile",
+  "vgi-profile",
+  "vbn-profile",
+  "vrn-profile",
+  "rsag-profile",
+  "vmt-profile",
+  "vos-profile",
+  "avv-profile",
+  "rejseplanen-profile",
+  "ooevv-profile",
+  "salzburg-profile",
+  "verbundlinie-profile",
+  "svv-profile",
+  "vor-profile",
+  "vkg-profile",
+  "vvv-profile",
+  "bls-profile",
+  "kvb-profile",
+  "bart-profile",
+  "ivb-profile",
+  "resrobot-profile",
+]
+
+[dev-dependencies]
+tokio = { version = "1.37", features = [ "rt-multi-thread", "macros" ] }
+env_logger = "0.11.3"
+rcore = { package = "railway-core", path = "../railway-core", features = [ "hyper-requester" ] }

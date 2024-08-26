@@ -1,0 +1,30 @@
+[package]
+name = "app"
+version = "0.1.0"
+description = "A Tauri App"
+authors = ["you"]
+edition = "2021"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[build-dependencies]
+tauri-build = { version = "1", features = [] }
+
+[dependencies]
+tauri = { version = "1", features = ["system-tray", "shell-open", "macos-private-api"] }
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+rspc = "0.2.0"
+rspc-tauri = "0.0.1"
+tokio = { version = "1.39.3", features = ["macros", "rt-multi-thread"] }
+tauri-plugin-positioner = { version = "1.0.5", features = ["system-tray"] }
+window-vibrancy = "^0.4"
+railway-provider-hafas = { path = "../../railway-provider-hafas", features = ["rt-multi-thread", "db-profile", "kvb-profile"] }
+railway-core = { path = "../../railway-core", features = ["hyper-requester"] }
+chrono = "0.4.38"
+specta = { version = "1.0.5", features = ["chrono"] }
+chrono-tz = "0.8.0"
+
+[features]
+# This feature is used for production builds or when a dev server is not specified, DO NOT REMOVE!!
+custom-protocol = ["tauri/custom-protocol"]

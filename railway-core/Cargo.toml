@@ -1,0 +1,36 @@
+[package]
+name = "railway-core"
+version = "0.1.0"
+authors = ["Julian Schmidhuber <railway-backend@schmidhuberj.de>"]
+edition = "2021"
+description = "Core type definitions of the Railway backend"
+repository = "https://gitlab.com/schmiddi-on-mobile/railway-backend"
+license = "AGPL-3.0-or-later OR EUPL-1.2"
+keywords = ["railway-backend", "train", "public-transport"]
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+async-trait = "0.1"
+log = "0.4"
+
+chrono = { version = "0.4" }
+chrono-tz = "0.8"
+url = "2.5"
+
+geojson = { version = "0.24", optional = true }
+
+# Hyper Requester
+hyper = { version = "0.14", optional = true }
+hyper-rustls = { version = "0.24", optional = true, features = [ "http1" ] }
+# Note: A newer version is already available, but conflicts with the one usef for hyper
+rustls = { version = "0.21", optional = true }
+rustls-pemfile = { version = "2.1", optional = true }
+
+serde = { version = "1.0", features = [ "derive" ], optional = true }
+
+[features]
+hyper-requester = [ "hyper-rustls", "hyper", "rustls", "rustls-pemfile" ]
+rt-multi-thread = [ ]
+polylines = [ "geojson" ]
+serde = [ "dep:serde", "chrono/serde" ]
